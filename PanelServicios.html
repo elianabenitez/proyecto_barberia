@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Horarios</title>
+    <!-- Agrega los enlaces a los archivos CSS de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">The weekend barber</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="panelPeluquero.html">Panel Principal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="PanelRealizados.html">Panel Realizados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="PanelServicios.html">Panel de Administracion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="panelencuesta.html">Panel de las encuestas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="mb-4">Panel de Días</h1>
+
+        <!-- Lista de Días -->
+        <ul id="dias-list" class="list-group">
+            <!-- Los días se cargarán aquí mediante JavaScript -->
+        </ul>
+    </div>
+
+    <div class="container mt-5">
+        <h3 class="mb-4">Panel de Horarios Sábado</h3>
+
+        <!-- Lista de Horarios -->
+        <ul id="horarios-list" class="list-group">
+            <!-- Los horarios se cargarán aquí mediante JavaScript -->
+        </ul>
+    </div>
+
+    <div class="container mt-5">
+        <h3 class="mb-4">Panel de Horarios Domingo</h3>
+
+        <!-- Lista de Horarios -->
+        <ul id="horarios-listt" class="list-group">
+            <!-- Los horarios se cargarán aquí mediante JavaScript -->
+        </ul>
+    </div>
+
+    <div class="container mt-5">
+        <h3 class="mb-4">Panel de Servicios</h3>
+
+        <!-- Formulario para agregar nuevos servicios -->
+        <form id="nuevo-servicio-form">
+            <div class="mb-3">
+                <label for="nombreServicio" class="form-label">Nombre del Servicio</label>
+                <input type="text" class="form-control" id="nombreServicio" required>
+            </div>
+            <div class="mb-3">
+                <label for="descripcionServicio" class="form-label">Descripción del Servicio</label>
+                <textarea class="form-control" id="descripcionServicio" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar Servicio</button>
+        </form>
+
+        <hr>
+
+        <!-- Lista de Servicios -->
+        <ul id="servicios-list" class="list-group">
+            <!-- Los servicios se cargarán aquí mediante JavaScript -->
+        </ul>
+    </div>
+
+    <!-- Agrega el enlace al archivo de JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="panelServicio.js"></script>
+</body>
+</html>

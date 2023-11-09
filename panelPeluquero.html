@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Pedidos</title>
+  
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">The weekend barber</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="panelPeluquero.html">Panel Principal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="PanelRealizados.html">Panel Realizados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="PanelServicios.html">Panel de Administracion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="panelencuesta.html">Panel de las encuestas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container pt-4">
+        <h3 class=" d-flex justify-content-center">Lista de Pedidos</h3>
+        <br>
+        <button id="borrarListaBoton" class="btn btn-danger">Marcar todos como Realizados <i class="bi bi-check"></i></button>
+        <br>
+        <br>
+        <ul id="pedido-list" class="list-group">
+            <!-- Los pedidos se cargarán aquí mediante JavaScript -->
+        </ul>
+    </div>
+
+    <!-- Modal de confirmación para borrar lista -->
+    <div class="modal fade" id="confirmacionModal" tabindex="-1" aria-labelledby="confirmacionModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmacionModalLabel">Confirmación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Está seguro de borrar todos los pedidos?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmarBorrarBoton">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Agrega el enlace al archivo de JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="panelPeluquero.js"></script>
+
+    <!-- Agrega el enlace al archivo de Bootstrap JavaScript (jQuery es necesario) -->
+
+</body>
+
+</html>
+
+
+
+

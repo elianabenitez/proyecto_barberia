@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Encuesta de Satisfacción</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">The weekend barber</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="panelPeluquero.html">Panel Principal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="PanelRealizados.html">Panel Realizados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="PanelServicios.html">Panel de Administracion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="panelencuesta.html">Panel de las encuestas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h3>Resultado de la Encuesta de satisfacción</h3>
+        <div id="resultados" class="mt-4">
+            <!-- Los resultados de la encuesta se mostrarán aquí -->
+        </div>
+    </div>
+    <ul id="encuesta-list" class="list-group"></ul>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="panelPeluquero.js"></script>
+    <script>
+        async function cargarDatos() {
+            try {
+                const response = await fetch('http://localhost:3000/encuesta');
+                const data = await response.json();
+                const listaEjemplos = document.getElementById('encuesta-list');
+
+                data.forEach((item) => {
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('list-group-item');
+                    listItem.innerHTML = `<h5 class="mb-1">Nombre: ${item.nombre}</h5>
+                                <p class="mb-1">¿Cómo calificarías nuestro servicio?: ${item.pregunta1}</p>
+                                <p class="mb-1">¿Qué y cómo podemos mejorar?: ${item.pregunta2}</p>
+                                <p class="mb-1">¿Nos recomiendas?: ${item.recomendar}</p>`;
+                    // Agrega un botón de eliminación
+                    const deleteButton = document.createElement('button');
+                    deleteButton.textContent = 'Eliminar';
+                    deleteButton.classList.add('btn', 'btn-danger', 'ml-2');
+
+                    // Asigna el identificador único del elemento en el servidor al botón de eliminación
+                    deleteButton.dataset.id = item.id;
+
+                    // Agrega un manejador de eventos para eliminar el elemento cuando se hace clic en el botón
+                    deleteButton.addEventListener('click', async () => {
+                        // Obtiene el ID del elemento del atributo de datos
+                        const id = deleteButton.dataset.id;
+
+                        // Realiza una solicitud DELETE al servidor
+                        try {
+                            const response = await fetch(`http://localhost:3000/encuesta/${id}`, {
+                                method: 'DELETE'
+                            });
+
+                            if (response.status === 200) {
+                                listItem.remove(); // Elimina el elemento de la lista
+                            } else {
+                                console.error('Error al eliminar el elemento.');
+                            }
+                        } catch (error) {
+                            console.error('Error al eliminar el elemento:', error);
+                        }
+                    });
+
+                    // Agrega el botón de eliminación al elemento de lista
+                    listItem.appendChild(deleteButton);
+
+                    listaEjemplos.appendChild(listItem);
+                });
+            } catch (error) {
+                console.error('Error al cargar los datos:', error);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', cargarDatos);
+    </script>
+
+
+
+</body>
+
+</html>

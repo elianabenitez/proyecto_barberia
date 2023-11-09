@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Realizados</title>
+    <!-- Agrega los enlaces a los archivos CSS de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">The weekend barber</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="panelPeluquero.html">Panel Principal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="PanelRealizados.html">Panel Realizados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="PanelServicios.html">Panel de Administracion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="panelencuesta.html">Panel de las encuestas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container pt-4">
+        <h1>Lista de Realizados</h1>
+        <ul id="pedido-list" class="list-group">
+            <!-- Los pedidos se cargarán aquí mediante JavaScript -->
+        </ul>
+    </div>
+
+    <!-- Agrega el enlace al archivo de JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="panelPeluquero.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // URL del JSON en tu servidor local
+            const jsonURL = "http://localhost:3000/pedidos";
+
+            // Obtiene la lista de pedidos del servidor
+            fetch(jsonURL)
+                .then((response) => response.json())
+                .then((data) => {
+                    const pedidoList = document.getElementById("pedido-list");
+
+                    // Itera a través de los pedidos y muestra los que tienen "ver" en true
+                    data.forEach((pedido) => {
+                        if (pedido.ver === false) {
+                            const listItem = document.createElement("li");
+                            listItem.className = "list-group-item";
+                            listItem.innerHTML = `
+                                <h5 class="mb-1">Nombre: ${pedido.nombreApellido}</h5>
+                                <p class="mb-1">Teléfono: ${pedido.telefono}</p>
+                                <p class="mb-1">Día: ${pedido.diaSemana}</p>
+                                <p class="mb-1">Servicio: ${pedido.servicio}</p>
+                                <p class="mb-1">Horario: ${pedido.horario}</p>
+                            `;
+                            pedidoList.appendChild(listItem);
+                        }
+                    });
+                })
+                .catch((error) => {
+                    console.error("Error al cargar los datos del servidor:", error);
+                });
+        });
+    </script>
+</body>
+
+</html>

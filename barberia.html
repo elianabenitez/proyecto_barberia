@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="">The weekend barber</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<header id="inicio" class="bg-dark text-white text-center py-5">
+    <div class="container">
+        <h1 class="display-4"><img src="img/logo_barberia.jpeg" id="logo" alt="logo" width="50" height="50"
+                class="d-inline-block"> Bienvenido a The weekend Barber </h1>
+        <p class="lead">Tu destino para el corte de cabello perfecto.</p>
+    </div>
+</header>
+
+
+
+
+<div class="container my-4">
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="img/corte_degrade.png" class="card-img-top" alt="degradado">
+                    <div class="card-body">
+                        <p class="card-text">Cortes en Degrade</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="img/corte_clasico.png" class="card-img-top" alt="corteClasico">
+                    <div class="card-body">
+                        <p class="card-text">Cortes Clasicos</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="img/corte_diseño.png" class="card-img-top" alt="corteDiseño">
+                    <div class="card-body">
+                        <p class="card-text">Cortes con Diseños</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="img/perfilados.png" class="card-img-top" alt="perfilados">
+                    <div class="card-body">
+                        <p class="card-text">Perfilados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h3 class="mb-4 d-flex justify-content-center">Reserve su turno</h3>
+
+
+    <p class="d-flex justify-content-center">
+        <a href="reservarTurnoSabado.html" id="sabadoButton" class="btn btn-dark btn-lg mx-3 d-none">Sábado</a>
+        <a href="reservarTurnoDomingo.html" id="domingoButton" class="btn btn-dark btn-lg mx-3 d-none">Domingo</a>
+    </p>
+</div>
+
+
+<section id="servicios" class="py-5">
+    <div class="container">
+        <h3 class="text-center">Nuestros Servicios</h3>
+    </div>
+    <div class="container mt-5">
+        <!-- Mostrar la lista de servicios -->
+        <ul id="servicios-list" class="list-group">
+            <!-- Los servicios se cargarán aquí usando JavaScript -->
+        </ul>
+        <br>
+
+    </div>
+</section>
+<div class="container mt-5">
+    <h3>Dejanos tu opinion aqui </h3>
+    <button id="toggleButton" class="btn btn-primary">Abrir encuesta</button>
+    <section id="seccion" style="display: none;">
+        <div class="container mt-5">
+
+
+
+            <h1>Encuesta de Satisfacción</h1>
+            <form id="encuestaForm">
+                <div class="form-group">
+                    <label for="pregunta2">Tu Nombre</label>
+                    <textarea class="form-control" id="nombre" name="nombre" rows="4" required
+                        placeholder="tu nombre aqui "></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="pregunta1">1. ¿Cómo calificarías nuestro servicio?</label>
+                    <select class="form-control" id="pregunta1" name="pregunta1">
+                        <option value="excelente">Excelente</option>
+                        <option value="bueno">Bueno</option>
+                        <option value="regular">Regular</option>
+                        <option value="malo">Malo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="pregunta2">2. ¿Qué y cómo podemos mejorar?</label>
+                    <textarea class="form-control" id="pregunta2" name="pregunta2" rows="4" required
+                        placeholder="tu oinion nos importa "></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>3. ¿Recomendarías nuestros servicios a otras personas?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="recomendar" id="si" value="si">
+                        <label class="form-check-label" for="si">Sí</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="recomendar" id="no" value="no">
+                        <label class="form-check-label" for="no">No</label>
+                    </div>
+                </div>
+
+                <!-- Botón de envío -->
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+
+    </section>
+</div>
+
+<script>
+    const toggleButton = document.getElementById('toggleButton');
+    const seccion = document.getElementById('seccion');
+
+    toggleButton.addEventListener('click', () => {
+        if (seccion.style.display === 'none') {
+            seccion.style.display = 'block';
+            toggleButton.textContent = 'Ocultar Sección';
+        } else {
+            seccion.style.display = 'none';
+            toggleButton.textContent = 'Mostrar Sección';
+        }
+    });
+</script>
+<script src="encuestaenviar.js"></script>
+<!-- Secciones de Reserva y Contacto similares al ejemplo anterior -->
+
+<footer class="w-100 bg-dark d-flex justify-content-center flex-wrap text-white p-2 mb-0 text-center py-3">
+    <p>&copy; The Weekend Barber. Todos los derechos reservados.</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="ServiciosYBotonesSavDogDisp.js"></script>
+</body>
+
+</html>
